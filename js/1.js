@@ -22,18 +22,20 @@ function addOperation(){
 }
 
 function onLoad(){
-	showOperations();
+	var now = new Date();
+	var month = now.getMonth() + 1;
+	showOperations(month);
 	showAccaunts();
 	setupDate();
 }
 
 //Выводит список экземляров сущности из БД
-function showOperations() {
+function showOperations(month) {
 	$.ajax({
 			async: false,			
 			type: "POST",
 			url: "./ajax/showOperations.php",
-			//data: 'entity=' + entity,
+			data: 'month=' + month,
 			dataType:"text",
 			error: function () {	
 				alert( "При считывании флага обновления произошла ошибка" );
