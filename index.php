@@ -9,7 +9,7 @@
 <body onLoad="onLoad()">
 <div id="content">
 	
-	<input type=date id="date">
+	<input type=date id="date" onChange="showDate()">
 	<input type=text id="description" placeholder="Описание">
 	<input type=text id="value" placeholder="Сумма">
 

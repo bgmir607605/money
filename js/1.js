@@ -1,3 +1,5 @@
+var curYear;
+var curMonth;
 function addOperation(){
 	var date = $("#date").val();
 	var description = $("#description").val();
@@ -21,21 +23,33 @@ function addOperation(){
 	});
 }
 
+function showDate(){
+	var date = new Date($('#date').val());
+	var year =  date.getFullYear();
+	var month = date.getMonth() + 1;
+	if ((year != curYear) | (month != curMonth)){
+		showOperations(year, month);
+		curYear = year;
+		curMonth = month;
+	};
+}
+
 function onLoad(){
 	var now = new Date();
-	var month = now.getMonth() + 1;
-	showOperations(month);
+	curYear =  now.getFullYear();
+	curMonth = now.getMonth() + 1;
+	showOperations(curYear, curMonth);
 	showAccaunts();
 	setupDate();
 }
 
 //Выводит список экземляров сущности из БД
-function showOperations(month) {
+function showOperations(year, month) {
 	$.ajax({
 			async: false,			
 			type: "POST",
 			url: "./ajax/showOperations.php",
-			data: 'month=' + month,
+			data: 'year=' + year + '&month=' + month,
 			dataType:"text",
 			error: function () {	
 				alert( "При считывании флага обновления произошла ошибка" );

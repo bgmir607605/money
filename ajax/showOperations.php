@@ -4,11 +4,12 @@ $mysqli = new mysqli("localhost", $dbUser, $dbPass, $dbName);
 $query = "set names utf8";
 $mysqli->query($query);
 
+$year = $_POST["year"];
 $month = $_POST["month"];
-echo getMonthRus($month);
+echo getMonthRus($month).' '. $year ;
 $condition = '';
 if ($month != ''){
-	$condition = $condition.' where month(date) = '.$month;
+	$condition = $condition.' where month(date) = '.$month.' and year(date) = '.$year;
 }
 
 $query = 'SELECT * FROM operations'.$condition ;
@@ -21,7 +22,6 @@ if ($result = $mysqli->query($query)) {
 $result->free();
 }
 
-echo '<br>'.$query.'<br>';
 echo 'Итого<br>-----<br>';
 echo $balance;
 
