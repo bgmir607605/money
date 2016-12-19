@@ -5,8 +5,9 @@
 <meta charset="utf-8"/>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/gChartDraw.js"></script>
-<script type="text/javascript" src="js/1.js"></script>
 <script type="text/javascript" src="js/dia.js"></script>
+<script type="text/javascript" src="js/1.js"></script>
+
 </head>
 <body onLoad="onLoad()">
 <div id="content">

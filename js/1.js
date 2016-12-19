@@ -29,6 +29,7 @@ function showDate(){
 	var month = date.getMonth() + 1;
 	if ((year != curYear) | (month != curMonth)){
 		showOperations(year, month);
+		drawChart(year, month);
 		curYear = year;
 		curMonth = month;
 	};

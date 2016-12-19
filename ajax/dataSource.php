@@ -4,8 +4,14 @@ $mysqli = new mysqli("localhost", $dbUser, $dbPass, $dbName);
 $query = "set names utf8";
 $mysqli->query($query);
 
+$year = $_POST["year"];
+$month = $_POST["month"];
+$condition = '';
+if ($month != ''){
+	$condition = $condition.' where month(date) = '.$month.' and year(date) = '.$year;
+}
 
-$query = "SELECT * FROM operations";
+$query = 'SELECT * FROM operations'.$condition ;
 $operations = array();
 $operations[0] = array("Источник", "Сумма");
 $i = 1;
