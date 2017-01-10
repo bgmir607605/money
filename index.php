@@ -33,6 +33,7 @@
 	</table>
 	<input type="button" value="Перевести" onClick="addTransfer()">
 </div>
+<div id="transfers"></div>
 <div id="diagrams">
 	<div id="expenseDia" style="width: 900px; height: 500px;"></div>
 	<div id="incomeDia" style="width: 900px; height: 500px;"></div>

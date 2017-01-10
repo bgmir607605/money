@@ -50,6 +50,7 @@ function onLoad(){
 	curYear =  now.getFullYear();
 	curMonth = now.getMonth() + 1;
 	showOperations(curYear, curMonth);
+	showTransfers(curYear, curMonth);
 	showAccaunts();
 	setupDate();
 	getAccauntsList();
@@ -172,9 +173,27 @@ function addTransfer(){
 			},
 			success: function (response) {
 				showAccaunts();
+				showTransfers(curYear, curMonth);
 				$("#src").val('');
 				$("#dst").val('');
 				$("#amountOfTransfer").val('');
 			}
 	});
+}
+
+function showTransfers(year, month) {
+	$.ajax({
+			async: false,
+			type: "POST",
+			url: "./ajax/showTransfers.php",
+			data: 'year=' + year + '&month=' + month,
+			dataType:"text",
+			error: function () {
+				alert( "При считывании флага обновления произошла ошибка" );
+			},
+			success: function (response) {
+				$('#transfers').html(response);
+			}
+	});
+
 }
