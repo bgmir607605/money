@@ -12,12 +12,12 @@ if ($month != ''){
 	$condition = $condition.' where month(date) = '.$month.' and year(date) = '.$year;
 }
 
-$query = 'SELECT * FROM operations'.$condition ;
+$query = 'SELECT operations.date, accaunts.name, operations.description, operations.value FROM operations join accaunts on operations.idAccaunt = accaunts.id'.$condition.' order by operations.date' ;
 $balance = 0;
 if ($result = $mysqli->query($query)) {
 	while ($row = $result->fetch_assoc()) {
 		$balance = $balance + $row["value"];
-		echo '<div>'.$row["date"].' '.$row["description"].' '.$row["value"].'</div>';
+		echo '<div>'.$row["date"].' '.$row["name"].' '.$row["description"].' '.$row["value"].'</div>';
 	}
 $result->free();
 }

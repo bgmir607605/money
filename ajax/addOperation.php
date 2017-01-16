@@ -8,7 +8,7 @@ $description = $_POST["description"];
 $value = $_POST["value"];
 $accaunt = $_POST["accaunt"];
 $category = $_POST["category"];
-$query = "insert into operations (date, description, value, idCategory) values ('".$date."', '".$description."', ".$value.", ".$category.")";
+$query = "insert into operations (date, description, value, idCategory, idAccaunt) values ('".$date."', '".$description."', ".$value.", ".$category.", ".$accaunt.")";
 $mysqli->query($query);
 $query = "UPDATE accaunts SET balance = balance + $value WHERE id = ".$accaunt."";
 $mysqli->query($query);
