@@ -24,6 +24,7 @@ function addOperation(){
 			},
 			success: function (response) {
 				showOperations(curYear, curMonth);
+				drawChart(curYear, curMonth);
 				showAccaunts();
 				$("#description").val('');
 				$("#value").val('');
@@ -71,6 +72,8 @@ function showOperations(year, month) {
 				$('#operations').html(response);
 			}
 	});
+
+
 
 }
 
