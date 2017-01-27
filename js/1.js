@@ -1,5 +1,37 @@
 var curYear;
 var curMonth;
+var minusCat;
+var plusCat;
+
+function getCategories(){
+		$.ajax({
+			async: false,
+			type: "POST",
+			url: "./ajax/getCategoryList.php",
+			data: 'direct=income',
+			dataType:"json",
+			error: function () {
+				alert( "При считывании флага обновления произошла ошибка" );
+			},
+			success: function (response) {
+				plusCat = response;
+			}
+		});
+
+		$.ajax({
+			async: false,
+			type: "POST",
+			url: "./ajax/getCategoryList.php",
+			data: 'direct=expense',
+			dataType:"json",
+			error: function () {
+				alert( "При считывании флага обновления произошла ошибка" );
+			},
+			success: function (response) {
+				minusCat = response;
+			}
+		});
+}
 function addOperation(){
 	var date = $("#date").val();
 	var description = $("#description").val();
@@ -55,6 +87,7 @@ function onLoad(){
 	showAccaunts();
 	setupDate();
 	getAccauntsList();
+	getCategories();
 }
 
 //Выводит список экземляров сущности из БД
@@ -121,39 +154,20 @@ function getAccauntsList(){
 }
 
 function editSum(){
-	//alert($('#value').val());
+	$('#categoryOfAmount').html('');
 	if ($('#value').val() > 0){
-		$.ajax({
-			async: false,
-			type: "POST",
-			url: "./ajax/getCategoryList.php",
-			data: 'direct=income',
-			dataType:"text",
-			error: function () {
-				alert( "При считывании флага обновления произошла ошибка" );
-			},
-			success: function (response) {
-				$('#categoryOfAmount').html(response);
+				for(var i = 0; i < plusCat.length; i++){
+					$('#categoryOfAmount').append('<option value="' + plusCat[i][0] + '">' + plusCat[i][1] + '</option>');
+					//console.log('<option value="' + plusCat[i][0] + '">' + plusCat[i][1] + '</option>');
+				}
 				$('#direct').html('На счёт');
 			}
-		});
 
-	}
 	if ($('#value').val() < 0){
-		$.ajax({
-			async: false,
-			type: "POST",
-			url: "./ajax/getCategoryList.php",
-			data: 'direct=expense',
-			dataType:"text",
-			error: function () {
-				alert( "При считывании флага обновления произошла ошибка" );
-			},
-			success: function (response) {
-				$('#categoryOfAmount').html(response);
-				$('#direct').html('Со счёта');
-			}
-		});
+		for(var i = 0; i < minusCat.length; i++){
+			$('#categoryOfAmount').append('<option value="' + minusCat[i][0] + '">' + minusCat[i][1] + '</option>');
+		}
+		$('#direct').html('Со счёта');
 	}
 }
 
