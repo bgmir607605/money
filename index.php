@@ -3,13 +3,19 @@
 <head>
 <title>Бюджет</title>
 <meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="mysite.css">
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/gChartDraw.js"></script>
 <script type="text/javascript" src="js/dia.js"></script>
 <script type="text/javascript" src="js/1.js"></script>
 </head>
 <body onLoad="onLoad()">
+	<div id="menu">
+		<h3>Меню</h3>
+		<a href="report.php">Отчёты</a>
+	</div>
 <div id="operationsControl">
+	<h3>Ввод операций</h3>
 	<input type=date id="date" onChange="showDate()">
 	<input type=text id="value" onBlur="editSum()" placeholder="Сумма">
 	<input type=text id="description" placeholder="Описание">
@@ -21,6 +27,7 @@
 <div id="operations"></div>
 <div id="accaunts"></div>
 <div id="transfersControl">
+	<h3>Переводы</h3>
 	<table>
 		<tr>
 			<th>Откуда</th><th>Куда</th><th>Сумма</th>
@@ -35,8 +42,8 @@
 </div>
 <div id="transfers"></div>
 <div id="diagrams">
-	<div id="expenseDia" style="width: 900px; height: 500px;"></div>
-	<div id="incomeDia" style="width: 900px; height: 500px;"></div>
+	<span id="expenseDia"></span>
+	<span id="incomeDia"></span>
 </div>
 </body>
 </html>

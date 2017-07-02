@@ -34,7 +34,7 @@ function drawChart(year = '', month = '') {
 	})
 
 	dataDia = google.visualization.arrayToDataTable(dataDia);
-
+	//var expenseChart = new google.visualization.ColumnChart(document.getElementById('expenseDia'));
 	var expenseChart = new google.visualization.PieChart(document.getElementById('expenseDia'));
 	expenseChart.draw(dataDia, options);
 
