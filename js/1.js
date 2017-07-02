@@ -66,6 +66,30 @@ function addOperation(){
 	});
 }
 
+function delOperation(id){
+	$.ajax({
+			async: false,
+			type: "POST",
+			url: "./ajax/delOperation.php",
+			data: 'id=' + id,
+			dataType:"text",
+			error: function () {
+				alert( "Ошибка" );
+			},
+			success: function (response) {
+				console.log(response);
+				// Закрытие модального окна
+				$('#myModal' + id).modal('hide');
+				$("div.modal-backdrop").remove();
+				$("body").removeClass();
+				$("body").removeProp("style");
+				showOperations(curYear, curMonth);
+				drawChart(curYear, curMonth);
+				showAccaunts();
+			}
+	});
+}
+
 function showDate(){
 	var date = new Date($('#date').val());
 	var year =  date.getFullYear();

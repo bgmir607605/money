@@ -53,7 +53,7 @@ if ($result = $mysqli->query($query)) {
 					  </div>
 					  <div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-						<button class="btn btn-danger"><span class="glyphicon glyphicon-trash"</span> Отменить операцию</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" onClick="delOperation('.$row["id"].')" ><span class="glyphicon glyphicon-trash"</span> Отменить операцию</button>
 						<button type="button" class="btn btn-primary">Сохранить изменения</button>
 					  </div>
 					</div>
