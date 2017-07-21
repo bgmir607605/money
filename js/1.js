@@ -90,6 +90,34 @@ function delOperation(id){
 	});
 }
 
+function updateOperation(id){
+	// Пока сохраняет изменения только категории
+	//Считать id новой категории
+	var idNewCat = $('#newCat' + id).val();
+	
+	$.ajax({
+			async: false,
+			type: "POST",
+			url: "./ajax/updateOperation.php",
+			data: 'id=' + id + '&idNewCat=' + idNewCat,
+			dataType:"text",
+			error: function () {
+				alert( "Ошибка" );
+			},
+			success: function (response) {
+				console.log(response);
+				// Закрытие модального окна
+				$('#myModal' + id).modal('hide');
+				$("div.modal-backdrop").remove();
+				$("body").removeClass();
+				$("body").removeProp("style");
+				showOperations(curYear, curMonth);
+				drawChart(curYear, curMonth);
+				showAccaunts();
+			}
+	});
+}
+
 function showDate(){
 	var date = new Date($('#date').val());
 	var year =  date.getFullYear();
