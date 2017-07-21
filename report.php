@@ -8,6 +8,7 @@
 <script type="text/javascript" src="js/reports.js"></script>
 </head>
 <body>
+<?php require_once 'menu.php'; ?>
 	<h1>Отчёты</h1>
 	<div id="monthDia" style="width: 900px; height: 500px;"></div>
 	

@@ -17,16 +17,7 @@
 	</head>
 <body onLoad="showCats()">
 	
-	<div id="menu">
-		<h3>Меню</h3>
-		<a href="report.php">Отчёты</a>
-		<button type="button" class="btn btn-link" data-toggle="modal" data-target="#myDiaIn">
-			Диаграмма доходов
-		</button>
-		<button type="button" class="btn btn-link" data-toggle="modal" data-target="#myDiaOut">
-			Диаграмма расходов
-		</button>
-	</div>
+	<?php require_once 'menu.php'; ?>
 <div id="catsControl">
 	<h3>Добавление категории</h3>
 	<input type=text id="catName" placeholder="Название новоой категории">
